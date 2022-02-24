@@ -71,7 +71,3 @@ if(isset($_POST["choice"])){
     }
     display_results($message, $player_choice, $computer_choice, $_SESSION['$games_played'],  $_SESSION['$games_won']);
 }
-// if(isset($_POST['submit'])){
-// $games_played=$games_played+1;
-// echo "NUMBER OF GAMES PLAYED = " + $games_played;
-// }
