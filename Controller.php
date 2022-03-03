@@ -1,5 +1,5 @@
 <?php
-require_once('model/model_login');
+require_once('model/models');
 class Controller{
     public $model;
     public function _construct(){
