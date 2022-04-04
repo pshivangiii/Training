@@ -9,11 +9,14 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-    <h2> EDIT RECORDS </h2>
+    <h2  style="background-color:#9ddb6a;"> EDIT RECORDS </h2>
     <br>
+    {{-- <p>Type something to search the table for team, designation or emails:</p>   --}}
+            <input  style="background-color:#e9e8d4;" class="form-control" id="myInput" type="text" placeholder="Search..">
+            <br>
     <table class="table table-bordered table-striped">
         <thead>
-<tr>
+          <tr style="background-color:#aa9cdf;">
 <td>ID</td>
 <td>Email</td>
 <td>Team</td>
@@ -21,6 +24,8 @@
 
 <td>Edit</td>
 </tr>
+</thead>
+<tbody id="myTable">
 @foreach ($users as $user)
 <tr>
 <td>{{ $user->id }}</td>
@@ -28,10 +33,27 @@
 <td>{{ $user->team}}</td>
 <td>{{ $user->designation}}</td>
 
-<td><a href = 'edit/{{ $user->id }}'>Edit</a></td>
+<td style="background-color:#b0e450;"><a href = 'edit/{{ $user->id }}'><b >Edit</b></a></td>
 </tr>
+        
+
 @endforeach
+</tbody>
 </table>
 <p>{{ $users->links() }}</p>
+
+<script>
+  $(document).ready(function(){
+    $("#myInput").on("keyup", function() {
+      var value = $(this).val().toLowerCase();
+      $("#myTable tr").filter(function() {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+      });
+    });
+  });
+  </script>
+  <style>
+      tr:hover {background-color: #cfb5b7;
+    </style>
 </body>
 </html>
