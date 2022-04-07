@@ -13,12 +13,11 @@ class NewLoginController extends Controller
 {
     public function getLogin(Request $request)
     {
+    
         $value = $request->session()->get('email');
         if(!empty($value))
         {
-            
-            $users=EmployeeDetails::specificData($value);
-            
+            $users=EmployeeDetails::getLogin($value,$request);
             return view('afterlogin')->with($users);
         
         }
@@ -47,12 +46,12 @@ class NewLoginController extends Controller
 
     public function getAdminLogin(Request $request)
     {
+       
         $value = $request->session()->get('email');
-        if(!empty($value)){
-            
-            $users=EmployeeDetails::specificData($value);
-            
-            return view('afterlogin')->with($users);
+        if(!empty($value))
+        { 
+            $users=AdminDetails::getLogin($value,$request);
+            return view('features')->with($users);
         
         }
         return view('newAdminLogin');
@@ -64,7 +63,7 @@ class NewLoginController extends Controller
 
         $password=$request->input('password');
 
-        $users=AdminDetails::login($email,$password);
+        $users=AdminDetails::login($email,$password,$request);
 
         if(isset($users))
         {
@@ -75,6 +74,7 @@ class NewLoginController extends Controller
           return view('newAdminLogin');
         }
     }
+  
 }
     
       
