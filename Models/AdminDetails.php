@@ -16,13 +16,26 @@ class AdminDetails extends Model
         $reg->password=$password;
         $reg->save();
     }
+    public static function getlogin($email,$request)
+    {
+         $check=AdminDetails::where(['email'=>$email])->get();
+        
+         if(count($check)>0)
+        
+                {
+                    $users=AdminDetails::where(['email'=>$email])->get();
+                    $users=compact('users');
+                    return $users;
+                }
+    }
 
-    public static function login($email,$password)
+    public static function login($email,$password,$request)
     {
         $check=AdminDetails::where(['email'=>$email,'password'=>$password])->get();
         if(count($check)>0)
         {
             $users=AdminDetails::where(['email'=>$email,'password'=>$password])->get();
+            $request->session()->put('email',$email);
             $users=compact('users');
             return $users;
         }
