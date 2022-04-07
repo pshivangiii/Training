@@ -61,8 +61,4 @@ class AttendanceController extends Controller
         EmployeeDetails::updateAttendance($email,$attendance,$approved);
         echo "Record updated successfully.";
      }
-    public function indexa($email)
-     {
-     return view('a');
-     }
 }
