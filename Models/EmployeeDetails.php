@@ -32,6 +32,18 @@ class EmployeeDetails extends Model
                     return $users;
                 }
     }
+    public static function getlogin($email,$request)
+    {
+         $check=EmployeeDetails::where(['email'=>$email])->get();
+        
+         if(count($check)>0)
+        
+                {
+                    $users=EmployeeDetails::where(['email'=>$email])->get();
+                    $users=compact('users');
+                    return $users;
+                }
+    }
 
     public static function find($email,$password)
     {
@@ -60,6 +72,11 @@ class EmployeeDetails extends Model
            
     }
 
+    public static function specificDataa($email)
+    {
+        $data = EmployeeDetails::where('email', $email)->get();
+        return $data;
+    }
     public static function specificData($email)
     {
         $data = EmployeeDetails::where('email', $email)->first();
@@ -68,7 +85,7 @@ class EmployeeDetails extends Model
 
     public static function dataById($id)
     {
-        $data = EmployeeDetails::where('id', $id)->first();
+        $data = EmployeeDetails::where('id', $id)->get();
          return $data;
     }
        
