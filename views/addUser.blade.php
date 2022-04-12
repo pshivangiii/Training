@@ -21,26 +21,15 @@
     <form class ="row g-3" action="{{url('/')}}/adduser" method="POST">
       
       {{ csrf_field() }}
-      {{-- <pre>
-        @php
-            print_r($errors->all)
-        @endphp
-      </pre> --}}
         <div class="container">
-          {{-- <h2>Register Yourself</h2> --}}
-          
-          <hr>
-      
           <label for="email"><b>Email</b></label>
           <input type="text" pattern="[^ @]*@[^ @]*" placeholder="Enter Email" name="email" id="email" >
          <div>
-          {{-- <span> --}}
          @php
           foreach ($errors->get('email') as $message) {
             echo $message;
            }
            @endphp
-           {{-- </span> --}}
           </div>
         <br>
           <label for=""><b>Team</b></label>
@@ -67,55 +56,34 @@
           <br><br>
          
          <div>
-          {{-- <span> --}}
          @php
           foreach ($errors->get('email') as $message) {
             echo $message;
            }
            @endphp
-           {{-- </span> --}}
           </div>
           <label for="psw"><b>Dummy Password</b></label>
-          <!-- <input type="password" placeholder="Enter Password" id="psw" name="psw" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required> -->
           <input type="password" placeholder="Enter Password" name="psw" id="psw" >
           <div>
-            {{-- <span> --}}
            @php
             foreach ($errors->get('psw') as $message) {
               echo $message;
              }
              @endphp
-             {{-- </span> --}}
             </div>
       <br>
           <label for="psw-repeat"><b>Repeat Password</b></label>
           <input type="password" placeholder="Repeat Password" name="psw-repeat" id="psw-repeat" >
           <div>
-            {{-- <span> --}}
            @php
             foreach ($errors->get('psw-repeat') as $message) {
               echo $message;
              }
              @endphp
-             {{-- </span> --}}
             </div>
           <br>
-          <button type="submit" class="btn">ADD USER</button>
-          
+          <button type="submit" class="btn">ADD USER</button> 
         </div>
-      
-    
       </form>
-      {{-- @if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif --}}
-{{-- <img src="https://th.bing.com/th/id/OIP.5lv67NtvBfMXUVcusQoAkAHaEK?w=298&h=183&c=7&r=0&o=5&dpr=1.5&pid=1.7" alt=" "  width="1500" height="600"> --}}
 </body>
 </html>
-<!-- THIS PAGE WILL FURTHER CONNECT TO LOGIN PAGE -->
