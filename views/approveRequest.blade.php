@@ -13,28 +13,27 @@
     <input style="background-color:#e5eed8;" class="form-control" id="myInput" type="text" placeholder="Search..">
     <br>
     <table class="table table-bordered table-striped">
-        <thead>
-          <tr style="background-color:#aa9cdf;">
-<td>ID</td>
-<td>Email</td>
-<td>Team</td>
-<td>Attendance Requests</td>
-
-<td>Approve</td>
-</tr>
-</thead>
-<tbody id="myTable">
-@foreach ($users as $user)
-<tr>
-<td>{{ $user->id }}</td>
-<td>{{ $user->email }}</td>
-<td>{{ $user->team}}</td>
-<td>{{ $user->pending_requests}}</td>
-<td><button id="btn"><a href = '/approve_attendance/{{ $user->email }}'>View Requests</a></button></td>
-</tr>
-@endforeach
-</tbody>
-</table>
+      <thead>
+        <tr style="background-color:#aa9cdf;">
+          <td>ID</td>
+          <td>Email</td>
+          <td>Team</td>
+          <td>Attendance Requests</td>
+          <td>Approve</td>
+        </tr>
+      </thead>
+      <tbody id="myTable">
+      @foreach ($users as $user)
+        <tr>
+          <td>{{ $user->id }}</td>
+          <td>{{ $user->email }}</td>
+          <td>{{ $user->team}}</td>
+          <td>{{ $user->pending_requests}}</td>
+          <td><button id="btn"><a href = '/approve_attendance/{{ $user->email }}'>View Requests</a></button></td>
+        </tr>
+      @endforeach
+      </tbody>
+    </table>
 <script>
     $(document).ready(function(){
       $("#myInput").on("keyup", function() {
