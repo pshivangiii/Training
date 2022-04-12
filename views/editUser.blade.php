@@ -10,26 +10,21 @@
 <body>
     <form class ="row g-3" action="{{url('/')}}/edit" method="POST">
         {{ csrf_field() }}
-
-        <table class="table table-bordered table-striped">
-            <thead>
-<tr>
-<td>Email</td>
-<td>Team</td>
-<td>Designation</td>
-
-</tr>
-@foreach($user as $key => $data)
-<tr>
-<td>{{ $data->email}}</td>
-<td>{{ $data->team }}</td>
-<td>{{ $data->designation }}</td>
-
-
-<td><a href = '/click/{{ $data->id }}'>EDIT</a></td>
- 
-</tr>
-@endforeach
+<table class="table table-bordered table-striped">
+  <thead>
+  <tr>
+    <td>Email</td>
+    <td>Team</td>
+    <td>Designation</td>
+  </tr>
+  @foreach($user as $key => $data)
+  <tr>
+    <td>{{ $data->email}}</td>
+    <td>{{ $data->team }}</td>
+    <td>{{ $data->designation }}</td>
+    <td><a href = '/click/{{ $data->id }}'>EDIT</a></td>
+  </tr>
+  @endforeach
 </table>
 </form>
 </body>
