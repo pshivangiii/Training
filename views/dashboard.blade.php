@@ -20,7 +20,6 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-   
       <li class="nav-item">
         <a class="nav-link" href="/newadminreg">ADMIN SIGN UP</a>
       </li>
@@ -34,21 +33,14 @@
         <a class="nav-link" href="/newlogin">EMPLOYEE SIGN IN</a>
       </li>
     </ul>
-    {{-- <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form> --}}
-  
   </div>
-  
 </nav>
 <style>
     h1 {text-align: center;}
     p {text-align: center;}
     div {text-align: center;}
-    </style>
+</style>
 <H1>RTDS EMPLOYEE MANAGEMENT</H1> 
 <img src="https://eezee.sg/blog/wp-content/uploads/2018/06/Artboard-3@3x.png" alt=" "  width="1280" height="488">
-
 </body>
 </html>
