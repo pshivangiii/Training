@@ -20,7 +20,6 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      {{-- @foreach($users as $users) --}}
       <li class="nav-item">
         <a class="nav-link" href="/adduser">Add User</a>
       </li>
@@ -28,7 +27,6 @@
         <a class="nav-link" href="/show">Delete User</a>
       </li>
       <li class="nav-item">
-        {{-- <a class="nav-link" href="/show">View Users</a> --}}
         <a class="nav-link" href="/pv">View Users</a>
       </li>
       <li class="nav-item">
@@ -42,16 +40,12 @@
       </li>
     </ul>
   </div>
-  
 </nav>
-{{-- @endforeach --}}
 <style>
     h1 {text-align: center;}
     p {text-align: center;}
     div {text-align: center;}
     </style>
     <img src="https://wallpaperaccess.com/full/5137786.jpg" alt=" "  width="1280" height="488">
-{{-- 
-<img src="https://th.bing.com/th/id/R.848a44a9b39214c08b7e72d0cd563940?rik=Lkb65cNihfmz3A&riu=http%3a%2f%2fwallpapercave.com%2fwp%2fs0nLOnC.jpg&ehk=l0boxMXnf5BbqDTKWKQI3guAoOGa4Wg9UNSrZN36mb0%3d&risl=&pid=ImgRaw&r=0" alt=" "  width="1280" height="488"> --}}
 </body>
 </html>
