@@ -10,30 +10,33 @@ use Illuminate\Support\Facades\DB;
 use Session;
 
 use Illuminate\Validation\Rule;
-
-// use App\Http\Controllers\Validator;
 use App\Http\Controllers\Controller;
 
 class FeaturesController extends Controller
 { 
-    public function addUser()
+    public function addUser(Request $request)
     {
+      $value = $request->session()->get('email');
+      if(empty($value))
+      { 
+          return view('newAdminlogin');
+      }
         return view('addUser');
     }
     public function addUserPost(Request $request)
     {
+        $value = $request->session()->get('email');
+      if(empty($value))
+      { 
+          return view('newAdminLogin');
+      }
         $this->validate($request, [
         'email' => 'required|email'
         // 'email' => 'required|unique:posts|max:255',
         // 'psw' => 'required_with:password_confirmation|same:psw-repeat',
-        // 'psw' => 'required|psw',
         // 'psw-repeat' => 'required|psw_repeat'
         ]);
-  
-    // print_r($request->input('email'));
-    // $name = $request->input('email');
-    // return $request->all();
-
+        
     $email=$request->input('email');
     $password=$request->input('psw');
     $team=$request->input('team');
@@ -42,8 +45,13 @@ class FeaturesController extends Controller
     return "NEW EMPLOYEE ADDED";
     }
 
-    public function destroy($id)
+    public function destroy(Request $request,$id)
     {
+        $value = $request->session()->get('email');
+        if(empty($value))
+        { 
+            return view('newAdminLogin');
+        }
         EmployeeDetails::deleteData($id);
         return "DELETED SUCCESSFULLY";
     
@@ -53,8 +61,13 @@ class FeaturesController extends Controller
         $data=EmployeeDetails::AllData();
         return view('userDetails',['data'=> $data]);
     }
-    public function getPaginateView()
+    public function getPaginateView(Request $request)
     {
+        $value = $request->session()->get('email');
+        if(empty($value))
+        { 
+            return view('newAdminLogin');
+        }
          $users=EmployeeDetails::AllDatap();
         return view('paginateView',['users'=> $users]);
     }
@@ -64,18 +77,33 @@ class FeaturesController extends Controller
         return view('payroll');
     }
 
-    public function viewProfile($email)
+    public function viewProfile(Request $request,$email)
     {
+        $value = $request->session()->get('email');
+      if(empty($value))
+      { 
+          return view('newLogin');
+      }
         $users=EmployeeDetails::specificDataa($email);
         return view('viewOwnProfile',['users'=>$users]); 
     }
-    public function updateOwnProfile($email)
+    public function updateOwnProfile(Request $request,$email)
     {
+        $value = $request->session()->get('email');
+      if(empty($value))
+      { 
+          return view('newLogin');
+      }
          $users=EmployeeDetails::specificData($email);
          return view('updateOwnProfile',['users'=>$users]);
     }
     public function postupdateOwnProfile(Request $request,$id)
     {
+      $value = $request->session()->get('email');
+      if(empty($value))
+      { 
+          return view('newLogin');
+      }
         $email = $request->input('email');
         $password = $request->input('psw');
         $team = $request->input('team');
