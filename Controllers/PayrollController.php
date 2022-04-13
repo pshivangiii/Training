@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\DB;
 
 class PayrollController extends Controller
 {
-    //MVC IMPLEMENTED
     public function getDetails($email)
     {
         $users=EmployeeDetails::specificData($email);
