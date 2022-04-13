@@ -17,14 +17,20 @@ class EmployeeController extends Controller
         return view('updateEmp',['users'=>$users]);
     }
 
-    public function show($email) 
+    public function show(Request $request,$email) 
     {
+        $value = $request->session()->get('email');
+        if(empty($value))
+        { 
+            return view('newAdminLogin');
+        }
         $users=EmployeeDetails::specificData($email);
         return view('update',['users'=>$users]);
     }
 
     public function edit(Request $request,$id)
     {
+        
         $email = $request->input('email');
         $password = $request->input('psw');
         $team = $request->input('team');
@@ -33,11 +39,17 @@ class EmployeeController extends Controller
         echo "Record updated successfully.";
     }
     //VIEW TEAM'S DATA IF YOU'RE A MANAGER
-    public function myTeam($team)
+    public function myTeam(Request $request,$team)
     {
+        $value = $request->session()->get('email');
+      if(empty($value))
+      { 
+          return view('newLogin');
+      }
         $users=EmployeeDetails::viewTeam($team);
         return view('myteam',['users'=>$users]); 
     }
+
 }
 
 
