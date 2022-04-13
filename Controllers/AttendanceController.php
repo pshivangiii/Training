@@ -9,27 +9,33 @@ use Illuminate\Support\Facades\DB;
 
 class AttendanceController extends Controller
 {
-
-//MVC IMPLEMENTED ATTENDANCE
-
     public function getAttendance()
      {
         return view('attendancePortal');
      }
 
-    public function getView($email)
+    public function getView(Request $request,$email)
      {
+      $value = $request->session()->get('email');
+      if(empty($value))
+      { 
+          return view('newLogin');
+      }
         $users=EmployeeDetails::specificDataa($email);
         return view('calendar',['users'=>$users]);
      }
     public function getAtt($id)
      {
-        // $users=EmployeeDetails::allData();
         $users=EmployeeDetails::dataById($id);
         return view('newfinal',['users'=>$users]);
      }
     public function finalSubmit(Request $request,$id) 
      {
+      $value = $request->session()->get('email');
+      if(empty($value))
+      { 
+          return view('newLogin');
+      }
         $email = $request->input('email');
         $password = $request->input('psw');
         $team = $request->input('team');
@@ -45,9 +51,14 @@ class AttendanceController extends Controller
         return view('approveRequest',['users'=>$users]);
      }
 
-    public function finalApprove($email) 
+    public function finalApprove(Request $request,$email) 
      {
-        $users=EmployeeDetails::allData($email);
+      $value = $request->session()->get('email');
+      if(empty($value))
+      { 
+          return view('newAdminLogin');
+      }
+      $users=EmployeeDetails::specificDataa($email);
         return view('approveAttendance',['users'=>$users]);        
      }
      public function postApproveAttendance(Request $request,$email)
