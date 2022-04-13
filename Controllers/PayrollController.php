@@ -8,8 +8,13 @@ use Illuminate\Support\Facades\DB;
 
 class PayrollController extends Controller
 {
-    public function getDetails($email)
+    public function getDetails(Request $request,$email)
     {
+      $value = $request->session()->get('email');
+      if(empty($value))
+      { 
+          return view('newLogin');
+      }
         $users=EmployeeDetails::specificData($email);
         return view('payrollDetails',['users'=>$users]);
     }
