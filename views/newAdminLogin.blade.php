@@ -33,4 +33,3 @@
        <img src="https://i0.wp.com/ednep.com/wp-content/uploads/2020/06/Employee-Management-System.png?w=810&ssl=1" alt=" "  width="1000" height="400">
 </body>
 </html> 
-<!-- THIS PAGE WILL FURTHER CONNECT TO THE GAME -->
