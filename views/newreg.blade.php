@@ -14,31 +14,19 @@
     <form class ="row g-3" action="{{url('/')}}/newreg" method="POST">
       
       {{ csrf_field() }}
-      {{-- <pre>
-        @php
-            print_r($errors->all)
-        @endphp
-      </pre> --}}
         <div class="container">
-  
-          <hr>
-      
           <label for="email"><b>Email</b></label>
           <input type="text" pattern="[^ @]*@[^ @]*" placeholder="Enter Email" name="email" id="email" >
          <div>
-          {{-- <span> --}}
          @php
           foreach ($errors->get('email') as $message) {
             echo $message;
            }
            @endphp
-           {{-- </span> --}}
           </div>
-        <br>
+          <br>
           <label for=""><b>Team</b></label>
-          
-           <select name="team" id="team">
-          
+          <select name="team" id="team">
            <option value="Software Development">Software Development</option>
            <option value="HR">HR</option>
            <option value="Sales">Sales</option>
@@ -48,27 +36,22 @@
           <br>
 
           <label for=""><b>Designation</b></label>
-          
            <select name="designation" id="designation">
-          
            <option value="Manager">Manager</option>
            <option value="IC1">IC-1</option>
            <option value="IC2">IC-2</option>
            <option value="IC3">IC-3</option>
            </select>
           <br><br>
-         
          <div>
-        
          @php
           foreach ($errors->get('email') as $message) {
             echo $message;
            }
            @endphp
-          
           </div>
           <label for="psw"><b>Password</b></label>
-          <!-- <input type="password" placeholder="Enter Password" id="psw" name="psw" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required> -->
+          <input type="password" placeholder="Enter Password" id="psw" name="psw" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
           <input type="password" placeholder="Enter Password" name="psw" id="psw" >
           <div>
            
@@ -76,14 +59,12 @@
             foreach ($errors->get('psw') as $message) {
               echo $message;
              }
-             @endphp
-            
+             @endphp 
             </div>
-      <br>
+            <br>
           <label for="psw-repeat"><b>Repeat Password</b></label>
           <input type="password" placeholder="Repeat Password" name="psw-repeat" id="psw-repeat" >
           <div>
-            {{-- <span> --}}
            @php
             foreach ($errors->get('psw-repeat') as $message) {
               echo $message;
