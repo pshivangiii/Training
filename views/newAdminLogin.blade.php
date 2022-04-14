@@ -1,5 +1,3 @@
-<!-- LOGIN PAGE -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,14 +19,7 @@
           <label for="password"><b>Password</b></label>
           <input type="password" placeholder="Enter Password" name="password" required>
           <button type="submit">Login </button>
-         
-         
-          <!-- <label>
-            <input type="checkbox" checked="checked" name="remember"> Remember me
-          </label> -->
-        </div>
-      
-        
+        </div>  
        </form>
        <img src="https://i0.wp.com/ednep.com/wp-content/uploads/2020/06/Employee-Management-System.png?w=810&ssl=1" alt=" "  width="1000" height="400">
 </body>
