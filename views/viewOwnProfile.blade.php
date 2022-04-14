@@ -5,11 +5,9 @@
 </head>
 <body>
 <h1 style="color :rgb(103, 39, 146); "><u> Profile Details </u></h1>
-{{-- <form class ="row g-3" action="{{url('/')}}/ownprofile" method="POST">
-    {{ csrf_field() }} --}}
     <table class="table table-bordered table-striped">
         
-    {{-- @foreach($users as $data) --}}
+    @foreach($users as $users)
     <tr style="background-color:#d6e69d;">
 <td>Email</td>
 <td>{{ $users->email}}</td>
@@ -26,11 +24,9 @@
     <td>EDIT</td>
     <td><a href = '/ownprofile/own/{{ $users->email}}'>Edit</a></td>
    </tr>
-
 </table>
-
 </form>
-{{-- @endforeach --}}
+@endforeach
 <style>
     table {
   border-collapse: collapse;
