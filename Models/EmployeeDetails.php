@@ -32,7 +32,7 @@ class EmployeeDetails extends Model
                     return $users;
                 }
     }
-    public static function getlogin($email,$request)
+    public static function getLogin($email,$request)
     {
          $check=EmployeeDetails::where(['email'=>$email])->get();
         
