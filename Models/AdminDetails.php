@@ -16,7 +16,7 @@ class AdminDetails extends Model
         $reg->password=$password;
         $reg->save();
     }
-    public static function getlogin($email,$request)
+    public static function getLogin($email,$request)
     {
          $check=AdminDetails::where(['email'=>$email])->get();
         
