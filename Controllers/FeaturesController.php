@@ -31,10 +31,9 @@ class FeaturesController extends Controller
           return view('newAdminLogin');
       }
         $this->validate($request, [
-        'email' => 'required|email'
-        // 'email' => 'required|unique:posts|max:255',
-        // 'psw' => 'required_with:password_confirmation|same:psw-repeat',
-        // 'psw-repeat' => 'required|psw_repeat'
+           'email' => 'required|unique:posts|max:255',
+           'psw' => 'required_with:password_confirmation|same:psw-repeat',
+           'psw-repeat' =>  'required|min:6'
         ]);
         
     $email=$request->input('email');
