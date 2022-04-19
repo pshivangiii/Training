@@ -10,7 +10,7 @@ class PayrollController extends Controller
 {
     public function getDetails(Request $request,$email)
     {
-      try
+       try
         {
            $users=EmployeeDetails::specificData($email);
            return view('payrollDetails',['users'=>$users]);
