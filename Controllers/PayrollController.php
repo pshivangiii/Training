@@ -10,12 +10,14 @@ class PayrollController extends Controller
 {
     public function getDetails(Request $request,$email)
     {
-      $value = $request->session()->get('email');
-      if(empty($value))
-      { 
-          return view('newLogin');
-      }
+        try{
         $users=EmployeeDetails::specificData($email);
         return view('payrollDetails',['users'=>$users]);
+        }
+        catch (\Exception $e) {
+            return redirect('error')->with(
+                'error', $e->getMessage()
+            );
+        }
     }
 }
