@@ -16,7 +16,7 @@ value = '<?php echo$users->email; ?>'/> </td>
 <tr  style="background-color:rgb(167, 104, 226);">
 <td>Reset Password</td>
 <td>
-<input type = 'text' name = 'psw' placeholder="Reset Password" 
+<input type = 'password' name = 'psw' placeholder="Reset Password" 
 value =  ''/></td>
 </tr>
 <tr style="background-color:rgb(221, 241, 103);">>
