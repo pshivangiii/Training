@@ -11,13 +11,33 @@ class AttendanceController extends Controller
 {
     public function getAttendance()
      {
-        return view('attendancePortal');
+        try
+        {
+            return view('attendancePortal');
+        }
+        catch (\Exception $e) 
+        {
+            return redirect('error')->with
+            (
+               'error', $e->getMessage()
+            );
+        }
      }
 
     public function getView(Request $request,$email)
      {
-        $users=EmployeeDetails::specificDataa($email);
-        return view('calendar',['users'=>$users]);
+        try
+        {
+            $users=EmployeeDetails::specificDataa($email);
+            return view('calendar',['users'=>$users]);
+        }
+        catch (\Exception $e) 
+        {
+            return redirect('error')->with
+            (
+               'error', $e->getMessage()
+            );
+        }
      }
 
     public function getAtt($id)
@@ -58,14 +78,34 @@ class AttendanceController extends Controller
 
     public function getApprovals()
      {
-        $users=EmployeeDetails::approval();
-        return view('approveRequest',['users'=>$users]);
+        try
+        {
+            $users=EmployeeDetails::approval();
+            return view('approveRequest',['users'=>$users]);
+        }
+        catch (\Exception $e) 
+        {
+            return redirect('error')->with
+            (
+               'error', $e->getMessage()
+            );
+        }
      }
 
     public function finalApprove(Request $request,$email) 
      {
-      $users=EmployeeDetails::specificDataa($email);
-        return view('approveAttendance',['users'=>$users]);        
+        try
+        {
+            $users=EmployeeDetails::specificDataa($email);
+            return view('approveAttendance',['users'=>$users]);    
+        }  
+        catch (\Exception $e) 
+        {
+            return redirect('error')->with
+            (
+               'error', $e->getMessage()
+            );
+        }  
      }
 
      public function postApproveAttendance(Request $request,$email)
