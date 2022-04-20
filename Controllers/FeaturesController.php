@@ -16,100 +16,148 @@ class FeaturesController extends Controller
 { 
     public function addUser(Request $request)
     {
-      $value = $request->session()->get('email');
-      if(empty($value))
-      { 
-          return view('newAdminlogin');
-      }
-        return view('addUser');
+        try
+        {
+            return view('addUser');
+        }
+        catch (\Exception $e) 
+        {
+            return redirect('error')->with
+            (
+               'error', $e->getMessage()
+            );
+        }
     }
     public function addUserPost(Request $request)
     {
-        $value = $request->session()->get('email');
-      if(empty($value))
-      { 
-          return view('newAdminLogin');
-      }
-        $this->validate($request, [
-           'email' => 'required|unique:posts|max:255',
-           'psw' => 'required_with:password_confirmation|same:psw-repeat',
-           'psw-repeat' =>  'required|min:6'
-        ]);
-        
-    $email=$request->input('email');
-    $password=$request->input('psw');
-    $team=$request->input('team');
-    $designation=$request->input('designation');
-    EmployeeDetails::registrationModel($email,$password,$team,$designation); 
-    return "NEW EMPLOYEE ADDED";
+        try
+        {
+            $email=$request->input('email');
+            $password=$request->input('psw');
+            $team=$request->input('team');
+            $designation=$request->input('designation');
+            EmployeeDetails::registrationModel($email,$password,$team,$designation); 
+            return "NEW EMPLOYEE ADDED";
+        }
+    catch (\Exception $e) 
+        {
+            return redirect('error')->with
+            (
+               'error', $e->getMessage()
+            );
+        }
     }
 
     public function destroy(Request $request,$id)
     {
-        $value = $request->session()->get('email');
-        if(empty($value))
-        { 
-            return view('newAdminLogin');
+        try
+        {
+            EmployeeDetails::deleteData($id);
+            return "DELETED SUCCESSFULLY";
         }
-        EmployeeDetails::deleteData($id);
-        return "DELETED SUCCESSFULLY";
+        catch (\Exception $e) 
+        {
+            return redirect('error')->with
+            (
+               'error', $e->getMessage()
+            );
+        }
     
     }
     public function showData()
     {
-        $data=EmployeeDetails::AllData();
-        return view('userDetails',['data'=> $data]);
+        try
+        {
+            $data=EmployeeDetails::AllData();
+            return view('userDetails',['data'=> $data]);
+        }
+        catch (\Exception $e) 
+        {
+            return redirect('error')->with
+            (
+               'error', $e->getMessage()
+            );
+        }
     }
     public function getPaginateView(Request $request)
     {
-        $value = $request->session()->get('email');
-        if(empty($value))
-        { 
-            return view('newAdminLogin');
+        try
+        {
+            $users=EmployeeDetails::AllDatap();
+            return view('paginateView',['users'=> $users]);
         }
-         $users=EmployeeDetails::AllDatap();
-        return view('paginateView',['users'=> $users]);
+        catch (\Exception $e) 
+        {
+            return redirect('error')->with
+            (
+               'error', $e->getMessage()
+            );
+        }
     }
 
     public function getPayroll()
     {
-        return view('payroll');
+        try
+        {
+            return view('payroll');
+        }
+        catch (\Exception $e) 
+        {
+            return redirect('error')->with
+            (
+               'error', $e->getMessage()
+            );
+        }
     }
 
     public function viewProfile(Request $request,$email)
     {
-        $value = $request->session()->get('email');
-      if(empty($value))
-      { 
-          return view('newLogin');
-      }
-        $users=EmployeeDetails::specificDataa($email);
-        return view('viewOwnProfile',['users'=>$users]); 
+        try
+        {
+            $users=EmployeeDetails::specificDataa($email);
+            return view('viewOwnProfile',['users'=>$users]); 
+        }
+        catch (\Exception $e) 
+        {
+            return redirect('error')->with
+            (
+               'error', $e->getMessage()
+            );
+        }
     }
     public function updateOwnProfile(Request $request,$email)
     {
-        $value = $request->session()->get('email');
-      if(empty($value))
-      { 
-          return view('newLogin');
-      }
-         $users=EmployeeDetails::specificData($email);
-         return view('updateOwnProfile',['users'=>$users]);
+        try
+        {
+            $users=EmployeeDetails::specificData($email);
+            return view('updateOwnProfile',['users'=>$users]);
+        }
+        catch (\Exception $e) 
+        {
+            return redirect('error')->with
+            (
+               'error', $e->getMessage()
+            );
+        }
     }
     public function postupdateOwnProfile(Request $request,$id)
     {
-      $value = $request->session()->get('email');
-      if(empty($value))
-      { 
-          return view('newLogin');
-      }
-        $email = $request->input('email');
-        $password = $request->input('psw');
-        $team = $request->input('team');
-        $designation = $request->input('designation');
-        EmployeeDetails::updateProfile($id,$email,$password,$team,$designation);
-
-        echo "Profile updated successfully.";
+        try
+        {
+            $email = $request->input('email');
+            $password = $request->input('psw');
+            $team = $request->input('team');
+            $designation = $request->input('designation');
+            EmployeeDetails::updateProfile($id,$email,$password,$team,$designation);
+            echo "Profile updated successfully.";
+        }
+        catch (\Exception $e) 
+        {
+            return redirect('error')->with
+            (
+               'error', $e->getMessage()
+            );
+        }
     }
 }
 
