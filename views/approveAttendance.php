@@ -16,7 +16,7 @@ value = '<?php echo$users[0]->email; ?>'/> </td>
 <tr style="background-color:rgb(157, 215, 248);">
 <td>Password</td>
 <td>
-<input type = 'text' name = 'psw'
+<input type = 'password' name = 'psw'
 value = '<?php echo$users[0]->password; ?>'/> </td>
 </tr>
 <tr  style="background-color:rgb(167, 104, 226);">
