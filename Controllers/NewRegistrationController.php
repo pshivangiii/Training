@@ -13,7 +13,11 @@ class NewRegistrationController extends Controller
     }
     public function reg(Request $request)
     {
- 
+        $this->validate(request(),[
+            'email' => 'required|email',
+
+            'password' => 'required|confirmed',
+        ]);
         $email=$request->input('email');
 
         $password=$request->input('psw');
