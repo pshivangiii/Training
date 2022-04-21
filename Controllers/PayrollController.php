@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 
 class PayrollController extends Controller
 {
-    public function getDetails(Request $request,$email)
+    public function showPayslip(Request $request,$email)
     {
        try
         {
