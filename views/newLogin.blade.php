@@ -1,16 +1,12 @@
 <!-- LOGIN PAGE -->
-
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LOGIN</title>
-    @push('styles')
-    <link href="{{ asset('css/login.css') }}" rel="stylesheet">
-    @endpush
-</head>
+  </head>
 <body style="text-align:center;">
     <h1> LOGIN </h1>
     <form class ="row g-3" action="{{url('/')}}/newlogin" method="POST">
@@ -23,7 +19,7 @@
           <input type="password" placeholder="Enter Password" name="password" required>
           <a href='/employee_details'><button type="submit">Login </button></a>
         </div>
-        </form>
+    </form>
         <img src="https://i0.wp.com/ednep.com/wp-content/uploads/2020/06/Employee-Management-System.png?w=810&ssl=1" alt=" "  width="1000" height="400">   
 </body>
 </html> 
