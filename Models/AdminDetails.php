@@ -31,14 +31,11 @@ class AdminDetails extends Model
     public static function enableLogin($email,$request)
     {
          $check=AdminDetails::where(['email'=>$email])->get();
-        
          if(count($check)>0)
-        
-                {
-                    $users=AdminDetails::where(['email'=>$email])->get();
-                    $users=compact('users');
-                    return $users;
-                }
-
+         {
+            $users=AdminDetails::where(['email'=>$email])->get();
+            $users=compact('users');
+            return $users;
+         }
     }
 }
